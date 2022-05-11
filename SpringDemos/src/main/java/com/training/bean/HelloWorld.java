@@ -17,6 +17,7 @@ public class HelloWorld {
 	{
 		//System.out.println("Message  injected...with setter");
 		this.message = message;
+		
 	}
 	
 	public String sayHello()
