@@ -9,7 +9,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 <!--  bean configuration -->
 
 <bean id="hello" class="com.training.bean.HelloWorld">
-<!-- <constructor-arg name="message" value="This is message to constructor"></constructor-arg> -->
+ <constructor-arg name="message1" value="This is message to constructor"></constructor-arg> 
 
 <property name="message"  value="This is message to Setter"></property>
 </bean>
