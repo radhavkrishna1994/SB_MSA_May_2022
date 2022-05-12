@@ -16,14 +16,9 @@ public class MyConfiguration2 implements ConfigurationProcessor{
 	@Value("${message}")
 	private String message;
 
-	public String getMessage() {
-		return message;
-	}
-
-	
 	public void process() {
 		System.out.println("This is in test mode");
-		
+		System.out.println(message);
 	}
 	
 	

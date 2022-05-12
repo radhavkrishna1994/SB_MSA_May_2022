@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Profile;
 
 import com.training.interfaces.ConfigurationProcessor;
 
-
+@Profile("dev")
 @ConfigurationProperties("number")
 @Configuration
-public class MyConfiguration  {
+public class MyConfiguration1 implements ConfigurationProcessor {
 
 	@Value("${message}")
 	private String message;
@@ -18,29 +18,10 @@ public class MyConfiguration  {
 	public String getMessage() {
 		return message;
 	}
-	
-	
-	private String start;
-	private String endValue;
-	
-	public void setStartValue(String start) {
-		this.start = start;
+	public void process() {
+		System.out.println("This is in Dev mode");
+		System.out.println(message);
 	}
-
-	public void setEndValue(String endValue) {
-		this.endValue = endValue;
-	}
-
-	public String getStartValue() {
-		return start;
-	}
-
-	public String getEndValue() {
-		return endValue;
-	}
-
-	
-	
 
 
 	

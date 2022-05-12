@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 
 import com.training.config.MyConfiguration;
 import com.training.interfaces.ConfigurationProcessor;
@@ -18,17 +19,20 @@ public class BookProducerServiceApplication implements CommandLineRunner{
 	}
 	
 	@Autowired
-	private ConfigurationProcessor config;
+	private ConfigurationProcessor config1;
+	
+	@Autowired
+	private MyConfiguration config;
 
 	@Override
 	public void run(String... args) throws Exception {
 		
-		//System.out.println(config.getMessage());
-		//System.out.println(config.getStartValue());
+		System.out.println(config.getMessage());
+		System.out.println(config.getStartValue());
 		
-		//System.out.println(config.getEndValue());
+		System.out.println(config.getEndValue());
 		
-		config.process();
+		config1.process();
 	}
 	
 	
