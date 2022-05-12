@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Profile;
 import com.training.interfaces.ConfigurationProcessor;
 
 
-@Profile("test")
+//@Profile("test")
 @ConfigurationProperties("number")
 @Configuration
 public class MyConfiguration2 implements ConfigurationProcessor{
