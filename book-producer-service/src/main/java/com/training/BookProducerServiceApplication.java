@@ -18,21 +18,23 @@ public class BookProducerServiceApplication implements CommandLineRunner{
 		SpringApplication.run(BookProducerServiceApplication.class, args);
 	}
 	
-	@Autowired
-	private ConfigurationProcessor config1;
-	
-	@Autowired
-	private MyConfiguration config;
+	/*
+	 * @Autowired private ConfigurationProcessor config1;
+	 * 
+	 * @Autowired private MyConfiguration config;
+	 */
 
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println(config.getMessage());
-		System.out.println(config.getStartValue());
-		
-		System.out.println(config.getEndValue());
-		
-		config1.process();
+		/*
+		 * System.out.println(config.getMessage());
+		 * System.out.println(config.getStartValue());
+		 * 
+		 * System.out.println(config.getEndValue());
+		 * 
+		 * config1.process();
+		 */
 	}
 	
 	
