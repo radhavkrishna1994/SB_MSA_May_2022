@@ -5,13 +5,13 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   
-  <servlet>
+ <!--  <servlet>
   <servlet-name>spring</servlet-name>
   <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  <servlet-name>spring</servlet-name>  <!--  spring-servlet.xml -->
-  <url-pattern>/</url-pattern> <!--  http://localhost:8080/SpringWebDemos/ -->
-  </servlet-mapping>
+  <servlet-name>spring</servlet-name>   spring-servlet.xml
+  <url-pattern>/</url-pattern>  http://localhost:8080/SpringWebDemos/
+  </servlet-mapping> -->
 </web-app>
