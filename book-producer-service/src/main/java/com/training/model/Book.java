@@ -1,5 +1,6 @@
 package com.training.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -17,6 +18,8 @@ public class Book {
 
 	@Id
 	private Long isbn;
+	
+	@Column(name="title",length=100,nullable=true)
 	private String title;
 	private Double price;
 	private Long stock;
