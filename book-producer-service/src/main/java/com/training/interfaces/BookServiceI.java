@@ -9,7 +9,7 @@ import com.training.model.Book;
 public interface BookServiceI {
 	
 	//retrieve all books
-	public List<Book> getBooks();
+	public List<BookDto> getBooks();
 	
 	//retrieve a book based on isbn
 	public BookDto getBook(Long isbn) throws BookNotFoundException;

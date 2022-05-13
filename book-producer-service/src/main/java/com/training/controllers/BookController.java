@@ -30,7 +30,7 @@ public class BookController {
 
 	//http://localhost:8081/bookstore/api/books
 	@GetMapping("/books")
-	public List<Book> getBooks()
+	public List<BookDto> getBooks()
 	{
 		return bookService.getBooks();
 	}

@@ -1,5 +1,6 @@
 package com.training.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,9 +25,11 @@ public class BookService implements BookServiceI{
 	private BookRepo bookRepo;
 	
 	@Override
-	public List<Book> getBooks() { // needs to be updated to BookDto
+	public List<BookDto> getBooks() { // needs to be updated to BookDto
+		List<BookDto> list=new ArrayList<>();
 		
-		return bookRepo.findAll();
+		bookRepo.findAll().stream().forEach(obj->appUtil.BookToBookDto(obj));
+		return list;
 	}
 
 	@Override
