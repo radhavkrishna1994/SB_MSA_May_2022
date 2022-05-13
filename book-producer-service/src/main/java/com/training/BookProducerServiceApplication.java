@@ -27,7 +27,9 @@ public class BookProducerServiceApplication implements CommandLineRunner{
 	 * 
 	 * @Autowired private MyConfiguration config;
 	 */
-
+	@Autowired
+	private BookRepo bookRepo;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
@@ -39,9 +41,15 @@ public class BookProducerServiceApplication implements CommandLineRunner{
 		 * 
 		 * config1.process();
 		 */
+		
+	//	System.out.println(bookRepo.findByTitle("CPlus"));
+	//	System.out.println(bookRepo.findByTitleLike("%C%"));
+	//	System.out.println(bookRepo.findByStockGreaterThan(120l));
+	//	System.out.println(bookRepo.getBooksStockGt(120l));
+	//	System.out.println(bookRepo.updateStock(120l, 50l));
+		
 	}
-	@Autowired
-	private BookRepo bookRepo;
+	
 	
 	/*
 	 * @PostConstruct public void saveBooks() { bookRepo.save(new

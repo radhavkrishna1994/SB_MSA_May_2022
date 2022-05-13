@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.training.dto.BookDto;
 import com.training.interfaces.BookServiceI;
 import com.training.model.Book;
 
@@ -34,36 +35,36 @@ public class BookController {
 	//http://localhost:8081/bookstore/api/book
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping("/book")
-	public Book saveBook(@RequestBody Book book)
-	{
-		return bookService.saveBook(book);
+	public BookDto saveBook(@RequestBody BookDto bookDto)
+	{	
+		return bookService.saveBook(bookDto);
 	}
 
 	//http://localhost:8081/bookstore/api/book/isbn/1234
 	@GetMapping("/book/isbn/{isbn}")
-	public ResponseEntity<Book> getBook(@PathVariable("isbn") Long isbn)
+	public ResponseEntity<BookDto> getBook(@PathVariable("isbn") Long isbn)
 	{
-		Book bookFound = bookService.getBook(isbn);
-		if(bookFound!=null)
-			return new ResponseEntity<Book>(bookFound, HttpStatus.OK);
-		return new ResponseEntity<Book>(bookFound, HttpStatus.NOT_FOUND);
+		BookDto bookFoundDto = bookService.getBook(isbn);
+		if(bookFoundDto!=null)
+			return new ResponseEntity<BookDto>(bookFoundDto, HttpStatus.OK);
+		return new ResponseEntity<BookDto>(bookFoundDto, HttpStatus.NOT_FOUND);
 	}
 
 	@DeleteMapping("/book/isbn/{isbn}")
-	public ResponseEntity<Book> deleteBook(@PathVariable("isbn") Long isbn)
+	public ResponseEntity<BookDto> deleteBook(@PathVariable("isbn") Long isbn)
 	{
-		Book bookFound = bookService.deleteBook(isbn);
-		if(bookFound!=null)
-			return new ResponseEntity<Book>(bookFound, HttpStatus.OK);
-		return new ResponseEntity<Book>(bookFound, HttpStatus.NOT_FOUND);
+		BookDto bookFoundDto = bookService.deleteBook(isbn);
+		if(bookFoundDto!=null)
+			return new ResponseEntity<BookDto>(bookFoundDto, HttpStatus.OK);
+		return new ResponseEntity<BookDto>(bookFoundDto, HttpStatus.NOT_FOUND);
 	}
 
 	@PutMapping("/book/isbn/{isbn}/stock/{stock}")
-	public ResponseEntity<Book> updateStockBook(@PathVariable("isbn") Long isbn,@PathVariable("stock") Long stock)
+	public ResponseEntity<BookDto> updateStockBook(@PathVariable("isbn") Long isbn,@PathVariable("stock") Long stock)
 	{
-		Book bookFound = bookService.updateBook(isbn, stock);
-		if(bookFound!=null)
-			return new ResponseEntity<Book>(bookFound, HttpStatus.OK);
-		return new ResponseEntity<Book>(bookFound, HttpStatus.NOT_FOUND);
+		BookDto bookFoundDto = bookService.updateBook(isbn, stock);
+		if(bookFoundDto!=null)
+			return new ResponseEntity<BookDto>(bookFoundDto, HttpStatus.OK);
+		return new ResponseEntity<BookDto>(bookFoundDto, HttpStatus.NOT_FOUND);
 	}
 }
