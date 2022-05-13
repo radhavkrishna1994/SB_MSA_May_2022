@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.dto.BookDto;
+import com.training.exceptions.BookNotFoundException;
 import com.training.interfaces.BookServiceI;
 import com.training.model.Book;
 
@@ -44,7 +45,7 @@ public class BookController {
 
 	//http://localhost:8081/bookstore/api/book/isbn/1234
 	@GetMapping("/book/isbn/{isbn}")
-	public ResponseEntity<BookDto> getBook(@PathVariable("isbn") Long isbn)
+	public ResponseEntity<BookDto> getBook(@PathVariable("isbn") Long isbn) throws BookNotFoundException
 	{
 		BookDto bookFoundDto = bookService.getBook(isbn);
 		if(bookFoundDto!=null)

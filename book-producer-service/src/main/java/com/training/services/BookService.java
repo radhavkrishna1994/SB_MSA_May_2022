@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.training.dto.BookDto;
+import com.training.exceptions.BookNotFoundException;
 import com.training.interfaces.BookServiceI;
 import com.training.model.Book;
 import com.training.repo.BookRepo;
@@ -29,17 +30,20 @@ public class BookService implements BookServiceI{
 	}
 
 	@Override
-	public BookDto getBook(Long isbn) {
+	public BookDto getBook(Long isbn) throws BookNotFoundException {
 		
 	//	Book bookFound = bookRepo.getById(isbn);
 		Optional<Book> bookOp = bookRepo.findById(isbn);
 		Book bookFound=null;
 		if(bookOp.isPresent()) {
 			bookFound = bookOp.get();
-			System.out.println("Book found.."+bookFound);
+			//System.out.println("Book found.."+bookFound);
 			return appUtil.BookToBookDto(bookFound);
 		}
-		return null;
+		else
+			throw new BookNotFoundException("Book Not Found Exception");
+		
+		//return null;
 	}
 
 	@Override

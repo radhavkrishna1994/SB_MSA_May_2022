@@ -3,6 +3,7 @@ package com.training.interfaces;
 import java.util.List;
 
 import com.training.dto.BookDto;
+import com.training.exceptions.BookNotFoundException;
 import com.training.model.Book;
 
 public interface BookServiceI {
@@ -11,7 +12,7 @@ public interface BookServiceI {
 	public List<Book> getBooks();
 	
 	//retrieve a book based on isbn
-	public BookDto getBook(Long isbn);
+	public BookDto getBook(Long isbn) throws BookNotFoundException;
 	
 	//save a book
 	public BookDto saveBook(BookDto book);
