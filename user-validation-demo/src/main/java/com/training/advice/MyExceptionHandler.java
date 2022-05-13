@@ -14,7 +14,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.training.exceptions.UserNotFoundException;
 
-@RestControllerAdvice
+//@RestControllerAdvice
 public class MyExceptionHandler
 {
 	

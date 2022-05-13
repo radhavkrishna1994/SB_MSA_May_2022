@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class BookDto {
 
-	@NotBlank(message="Isbn cannot be blank")
+	
 	private Long isbn;
 	
 	@NotBlank(message="Title cannot be blank")
