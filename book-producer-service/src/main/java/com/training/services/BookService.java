@@ -3,6 +3,7 @@ package com.training.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class BookService implements BookServiceI{
 	public List<BookDto> getBooks() { // needs to be updated to BookDto
 		List<BookDto> list=new ArrayList<>();
 		
-		bookRepo.findAll().stream().forEach(obj->appUtil.BookToBookDto(obj));
+		bookRepo.findAll().stream().forEach(obj->list.add(appUtil.BookToBookDto(obj)));
 		return list;
 	}
 
@@ -85,5 +86,7 @@ public class BookService implements BookServiceI{
 		}
 		return null;
 	}
+	
+	
 
 }
