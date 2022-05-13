@@ -2,6 +2,8 @@ package com.training.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +37,7 @@ public class BookController {
 	//http://localhost:8081/bookstore/api/book
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping("/book")
-	public BookDto saveBook(@RequestBody BookDto bookDto)
+	public BookDto saveBook(@RequestBody @Valid BookDto bookDto)
 	{	
 		return bookService.saveBook(bookDto);
 	}

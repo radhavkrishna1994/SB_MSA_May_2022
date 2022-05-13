@@ -17,7 +17,7 @@ import com.training.utils.AppUtil;
 public class BookService implements BookServiceI{
 
 	@Autowired
-	private AppUtil appUtil;
+	private AppUtil appUtil;	
 	
 	@Autowired
 	private BookRepo bookRepo;
@@ -44,7 +44,7 @@ public class BookService implements BookServiceI{
 
 	@Override
 	public BookDto saveBook(BookDto bookDto) {
-		
+		System.out.println("BookDto:"+bookDto);
 		Book book = appUtil.BookDtoToBook(bookDto);
 		//set other properties
 		bookRepo.save(book);
