@@ -24,7 +24,7 @@ public class AopExampleApplication {
 	{
 		return args->{
 			
-			System.out.println(service.getName());
+			System.out.println(service.getName("sam"));
 			
 			System.out.println(service.getSalary());
 		

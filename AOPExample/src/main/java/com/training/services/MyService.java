@@ -9,11 +9,11 @@ public class MyService {
 
 	
 	
-	public String getName()
+	public String getName(String name) throws Exception
 	{
-		
-		return "Sam";
-		
+		if(name==null)
+		throw new Exception("Name cannot be null");
+		return name;
 	}
 	
 	public Double getSalary()

@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -38,15 +40,17 @@ public class MyAspect {
 	
 
 	@Around(value = "execution(* com.training.services.MyService.get*(..))") //PointCut Expn
-	public void logAround(ProceedingJoinPoint joinPoint)
+	public Object logAround(ProceedingJoinPoint joinPoint)
 	{
 		log.info("This is around method.."+LocalDate.now());
 		String className=joinPoint.getTarget().getClass().toString();
 		log.info("classname:"+className);
 		log.info(""+joinPoint.getSignature());
-		
+		Object value=null;
 		try {
-			Object value= joinPoint.proceed();
+			 value= joinPoint.proceed();
+			// if(value==null)
+			//	 throw new Exception("Exception");
 			log.info("Value returned :"+value);
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
@@ -54,5 +58,18 @@ public class MyAspect {
 		}
 		
 		log.info("before returning the method");
+		return value;
+	}
+	
+	@AfterThrowing(value = "execution(* com.training.services.MyService.get*(..))")
+	public void logThrowAspect()
+	{
+		log.info("Throwing exception");
+	}
+	
+	@AfterReturning(value = "execution(* com.training.services.MyService.get*(..))")
+	public void logReturnAspect()
+	{
+		log.info("returning value");
 	}
 }
