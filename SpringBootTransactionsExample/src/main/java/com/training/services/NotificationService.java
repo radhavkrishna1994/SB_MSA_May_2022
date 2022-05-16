@@ -2,6 +2,7 @@ package com.training.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,9 +16,11 @@ public class NotificationService {
 	@Autowired
 	private NotificationRepo notificationRepo;
 	
-	@Transactional(propagation = Propagation.MANDATORY)
+	@Transactional(propagation = Propagation.MANDATORY,isolation = Isolation.READ_COMMITTED)
 	public void addNotification(Notification not)
 	{
 		notificationRepo.save(not);
+		
+		
 	}
 }
