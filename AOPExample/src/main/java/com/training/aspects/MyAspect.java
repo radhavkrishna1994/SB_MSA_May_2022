@@ -1,6 +1,7 @@
 package com.training.aspects;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -29,6 +30,15 @@ public class MyAspect {
 		log.info(""+joinPoint.getSignature());
 	}
 	
+	@Before(value = "execution(* com.training.services.MyService.get*(..))") //PointCut Expn
+	public void logBeforeAspect1(JoinPoint joinPoint)
+	{
+		log.info("This is Before1 method..");
+		String className=joinPoint.getTarget().getClass().toString();
+		log.info("classname:"+className);
+		log.info(""+joinPoint.getSignature());
+	}
+	
 	@After(value = "execution(* com.training.services.MyService.get*(..))") //PointCut Expn
 	public void logAfterAspect(JoinPoint joinPoint)
 	{
@@ -49,6 +59,8 @@ public class MyAspect {
 		Object value=null;
 		try {
 			 value= joinPoint.proceed();
+			 Object args[]=joinPoint.getArgs();
+			log.info(Arrays.toString(args));
 			// if(value==null)
 			//	 throw new Exception("Exception");
 			log.info("Value returned :"+value);
