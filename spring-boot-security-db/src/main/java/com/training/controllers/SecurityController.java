@@ -5,23 +5,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SecurityController {
-
-	@GetMapping
+	
+	@GetMapping("/hello")
 	public String sayHello()
 	{
-		return "Welcome to Spring Security";
+		return "Hello Security App";
 	}
 	
-	@GetMapping("user/hello")
-	public String helloUser()
+	@GetMapping("/user/hello")
+	public String sayHelloUser()
 	{
-		return "Hello User!";
+		return "Hello User";
 	}
 	
-	@GetMapping("admin/hello")
-	public String helloAdmin()
+	@GetMapping("/admin/hello")
+	public String sayAdminUser()
 	{
-		return "Hello Admin!";
+		return "Hello Admin";
 	}
-	
+
 }

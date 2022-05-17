@@ -9,16 +9,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 @Table(name="users")
 public class MyUser {
-
 	@Id
-	@Column(name="username",length=200)
+	@Column(name="username",length=100)
 	private String username;
 	private String password;
 	private String role;
+
 }

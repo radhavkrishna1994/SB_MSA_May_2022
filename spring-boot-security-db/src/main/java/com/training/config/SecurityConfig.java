@@ -13,66 +13,65 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.training.services.MyUserDetailsService;
 
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Configuration
 @EnableWebSecurity
-public class SecurityConfigurationDb extends WebSecurityConfigurerAdapter {
-	
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
 	
-	@Bean
-	public PasswordEncoder getPasswordEncoder()
+	private Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+	//Authentication
+	public void configure(AuthenticationManagerBuilder auth) throws Exception
 	{
-		return new PasswordEncoder()
+		log.info("Authentication");
+		
+		auth
+		.userDetailsService(myUserDetailsService)
+		.passwordEncoder(getPasswordEncoder());
+	
+		
+	}
+		
+	@Bean
+	public PasswordEncoder getPasswordEncoder() {
+		
+		log.info("In Password Encoder..");
+		PasswordEncoder encoder = new PasswordEncoder()
 				{
 					@Override
 					public String encode(CharSequence rawPassword) {
-						log.info("Encode method");
+						
+						log.info("In Password Encoder Encode..");
 						return rawPassword.toString();
 					}
 
 					@Override
 					public boolean matches(CharSequence rawPassword, String encodedPassword) {
-						log.info("Matches method");
+						log.info("In Password Encoder Matches..");
 						return rawPassword.equals(encodedPassword);
 					}
 			
 				};
-	}
-	
-	//Authentication
-	public void configure(AuthenticationManagerBuilder auth) throws Exception
-	{
-				log.info("In Authentication");
-	 
-				auth
-				.userDetailsService(myUserDetailsService)
-				.passwordEncoder(getPasswordEncoder());
-				
 		
+		return encoder;
 	}
-	
+
 	//Authorization
-	
 	public void configure(HttpSecurity http) throws Exception
 	{
-		log.info("In Authorization");
+		log.info("In Authorization....");
+		
 		http
-		//.csrf().disable()
-		//.headers().frameOptions().disable()
-		//.and()
 		.authorizeRequests()
 		.antMatchers("/user/**")
-		.hasRole("USER")
+		//.hasRole("USER")
+		.hasAnyRole("USER","ADMIN")
 		.antMatchers("/admin/**")
 		.hasRole("ADMIN")
-		.and()
-		.formLogin();
+		.and().formLogin();
 		
 	}
 	
-
 }
