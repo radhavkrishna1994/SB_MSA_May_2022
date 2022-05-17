@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,8 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.training.services.MyUserDetailsService;
 
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -64,14 +65,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		log.info("In Authorization....");
 		
 		http
+		.csrf().disable()
 		.authorizeRequests()
+		.antMatchers("/authenticate")
+		.permitAll()
 		.antMatchers("/user/**")
 		//.hasRole("USER")
 		.hasAnyRole("USER","ADMIN")
 		.antMatchers("/admin/**")
 		.hasRole("ADMIN")
-		.and().formLogin();
+		.anyRequest().authenticated();
 		
+		
+	}
+	
+	@Bean
+	public AuthenticationManager getAuthManager() throws Exception
+	{
+		return super.authenticationManager();
 	}
 	
 }
