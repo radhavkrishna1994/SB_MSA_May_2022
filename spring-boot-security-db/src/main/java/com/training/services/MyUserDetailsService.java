@@ -27,7 +27,7 @@ public class MyUserDetailsService implements UserDetailsService {
 	private UserRepo userRepo;
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username)  {
 		log.info("In userdetails Service...");
 		Optional<MyUser> opUser = userRepo.findById(username);
 		MyUser myUser=null;
@@ -53,8 +53,10 @@ public class MyUserDetailsService implements UserDetailsService {
 
 			return new User(username, myUser.getPassword(), list);
 		}
-				
-		return null;
+		else {		
+			
+		throw new UsernameNotFoundException("Username mismatch");
+		}
 	}
 
 }
