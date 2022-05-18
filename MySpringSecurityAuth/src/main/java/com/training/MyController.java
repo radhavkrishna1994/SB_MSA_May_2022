@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MyController {
 
 	@GetMapping("/")
-	public String sayHelloOauth2(Principal principal)
+	public String sayHelloOauth2(Principal principal) // github radhavkrishna1994
 	{
 		return principal.getName()+" Welcome Oauth2 Cloud";
 	}
