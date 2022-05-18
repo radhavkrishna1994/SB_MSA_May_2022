@@ -38,21 +38,21 @@ public class SecurityController {
 
 	@Autowired
 	private JwtUtil jwtUtil;
-	
+
 	@PostMapping("/authenticate") // {"username":"user1","password","user123"}
 	public String authenticate(@RequestBody Input input) { 
 		try { 
 			authManager.authenticate(new
 					UsernamePasswordAuthenticationToken(input.getUsername(),input.getPassword()));
 
-				// load the userdetailsservice 
-				// validate the user
-				// User Object
+			// load the userdetailsservice 
+			// validate the user
+			// User Object
 			return jwtUtil.generateToken(input.getUsername()); } 
-		
+
 		catch(BadCredentialsException ex) {
 
-				return ex.getMessage(); } }
+			return ex.getMessage(); } }
 
 
 
