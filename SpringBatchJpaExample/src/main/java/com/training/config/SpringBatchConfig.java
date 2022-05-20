@@ -37,7 +37,7 @@ public class SpringBatchConfig {
     ) {
     	log.info("In Job Bean....");
         Step step = stepBuilderFactory.get("ETL-file-load")
-                .<User, User>chunk(100)
+                .<User, User>chunk(2)
                 .reader(itemReader)
                 .processor(itemProcessor)
                 .writer(itemWriter)

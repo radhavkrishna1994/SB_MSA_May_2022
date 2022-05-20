@@ -17,9 +17,9 @@ public class SpringBatchJpaExampleApplication {
 	}
 
 	
-	  @Autowired private Scheduler sch;
+	 @Autowired private Scheduler sch;
 	  
-	  @Bean CommandLineRunner getRunner(ApplicationContext ctx) { return args->{
+	 @Bean CommandLineRunner getRunner(ApplicationContext ctx) { return args->{
 	  
 	  sch.cronJobSch(); }; }
 	 

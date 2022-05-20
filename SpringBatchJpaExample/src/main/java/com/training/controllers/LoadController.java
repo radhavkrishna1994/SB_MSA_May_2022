@@ -25,9 +25,8 @@ public class LoadController {
     @Autowired
     Job job;
 
-    //@Scheduled(fixedDelay = 10000)
-      // @Async
-    @GetMapping
+     @Scheduled(fixedDelay = 10000)
+     @GetMapping
     public BatchStatus load() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
 
 

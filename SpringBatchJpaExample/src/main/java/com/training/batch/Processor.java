@@ -29,7 +29,8 @@ public class Processor implements ItemProcessor<User, User> {
     }
 
     @Override
-    public User process(User user) throws Exception {
+    public User process(User user) throws Exception { //1	Peter	001	12000
+
     	log.info("Processing.....");
     	//Thread.sleep(5000);
         String deptCode = user.getDept();
