@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,6 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity  
+@Table(name="books")
 public class Book {
 
 	@Id  //primary key
@@ -26,7 +28,7 @@ public class Book {
 	private String title;
 	private Double price;
 	private Long stock;
-	private int port;
+	//private int port;
 	
 //	private LocalDate dop;
 	

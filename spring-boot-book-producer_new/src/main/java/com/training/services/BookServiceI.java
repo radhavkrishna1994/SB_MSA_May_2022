@@ -19,5 +19,7 @@ public interface BookServiceI {
 	public Book updateBookStock(Long isbn,Long newStock);
 	
 	public String sayHello();
+	
+	public int sum(int x,int y);
 
 }

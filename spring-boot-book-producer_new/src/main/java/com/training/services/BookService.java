@@ -69,9 +69,18 @@ public class BookService implements BookServiceI {
 		return null;
 	}
 	
+	// return "HELLO"
 	public String sayHello()
 	{
-		return "hello";
+		return "HELLO";
 	}
 
+	//sum 
+	@Override
+	public int sum(int x, int y) {
+		
+		return x * y;
+	}
+
+	
 }

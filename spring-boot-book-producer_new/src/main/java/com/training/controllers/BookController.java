@@ -64,7 +64,7 @@ public class BookController {
 		return bookService.updateBookStock(isbn, newstock);
 	}
 	
-	@ResponseStatus(code = HttpStatus.CREATED)
+	@ResponseStatus(code = HttpStatus.CREATED) //201
 	@PostMapping("/book")
 	public Book addBook(@RequestBody Book book)
 	{
