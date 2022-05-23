@@ -1,0 +1,75 @@
+
+	
+
+
+	Git commands
+	git init - initialize a repo
+	put all modifications to staging area
+	commit from staging area.
+	
+	create a file Demo.java add some content
+	then add filename
+
+	git add Demo.java
+	to add all the files. 
+	add .
+
+	git commit  -m "message"
+	 -- commits the changes in the staging area.
+	and maintains an unique id.
+
+	git status -- current status -- current branch
+	gives info if any files to be added or commited.
+
+	git config
+		user email and password
+			globally 
+	
+	git config --global user.name 'radha'
+	git config --global user.email 'radhavkrishna1994@gmail.com'
+
+	wo --global its local
+
+git init -b main
+
+	git push -u origin master
+	git branching
+
+	git branch
+to create one git branch newbranch
+	
+	git checkout newbranch
+
+	makes changes to new branch
+	git checkout master
+	git merge newbranch
+
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+	
+	ssh-keygen -t rsa
+	open id_rsa.pub copy key on git 
+	
+	
+https://github.com/radhavkrishna1994/java.git
+
+
+git remote add origin https://github.com/radhavkrishna1994/training.git 
+git remote -v
+
+	git pull origin master
+git push -u origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
