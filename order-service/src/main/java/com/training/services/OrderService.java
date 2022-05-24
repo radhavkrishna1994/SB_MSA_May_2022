@@ -19,19 +19,19 @@ import com.training.model.Order;
 public class OrderService {
 
 
-	//private String producerUrl = "http://localhost:8081/bookstore/api/book/isbn/{isbn}";
+	private String producerUrl = "http://localhost:8081/bookstore/api/book/isbn/{isbn}";
 	
 	@Autowired
 	private OrderConfig orderConfig;
 	
-	private String producerUrl;
+	//private String producerUrl;
 
 	@Autowired
 	private RestTemplate restTemplate;
 
 	public ResponseEntity<Order> createOrder(Long isbn,int qty)
 	{
-		producerUrl = orderConfig.getServiceUrl();
+	//	producerUrl = orderConfig.getServiceUrl();
 		Map<String,String> map= new HashMap<>();
 		map.put("isbn", String.valueOf(isbn));
 

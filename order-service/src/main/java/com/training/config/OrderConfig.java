@@ -9,12 +9,11 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class OrderConfig {
 
-	@Value("${serviceurl}")
-	private String serviceUrl;
-	
-	public String getServiceUrl() {
-		return serviceUrl;
-	}
+	/*
+	 * @Value("${serviceurl}") private String serviceUrl;
+	 * 
+	 * public String getServiceUrl() { return serviceUrl; }
+	 */
 
 	@Bean
 	public RestTemplate getRestTemplate()
