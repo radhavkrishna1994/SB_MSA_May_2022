@@ -10,14 +10,20 @@ import org.springframework.stereotype.Service;
 
 import com.training.data.UserData;
 import com.training.model.User;
+import com.training.repo.UserRepo;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class UserService {
 	
 	@Autowired
 	private UserData userData;
+	
+	
+	@Autowired
+	private UserRepo userRepo;
 	
 	public List<User> getUsers()
 	{
@@ -32,4 +38,24 @@ public class UserService {
 		
 		
 	}
+	
+	
+	//Reactive
+	public Flux<User> getUsersStreamDb()
+	{
+		return userRepo.findAll();
+		
+	}
+	
+	public Mono<User> getUser(int userId)
+	{
+		return userRepo.findById(userId);
+		
+	}
+	public void addUser(User user)
+	{
+		userRepo.save(user).subscribe();
+	}
+	
+	
 }

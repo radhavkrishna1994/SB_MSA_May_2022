@@ -26,7 +26,7 @@ public class UserData {
 	//Web
 	public List<User> getUsers()
 	{
-		return IntStream.range(1, 5)
+		return IntStream.range(1, 11)
 		.peek(UserData::sleepThread)		
 		.peek(i->System.out.println("processing..."+i))
 		.mapToObj(i->new User(i, "user"+i, "user"+i+"gmail.com"))
@@ -36,7 +36,7 @@ public class UserData {
 	//Reactive
 	public Flux<User> getUsersStream()
 	{
-		return Flux.range(1, 6)
+		return Flux.range(1, 11)
 		.delayElements(Duration.ofSeconds(2))
 		.doOnNext(i->System.out.println("Processing....."+i))
 		.map(i->new User(i, "user"+i, "user"+i+"gmail.com"))
