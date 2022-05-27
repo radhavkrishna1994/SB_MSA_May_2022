@@ -15,7 +15,7 @@ public class GatewayServiceApplication {
 		SpringApplication.run(GatewayServiceApplication.class, args);
 	}
 	
-	@Bean
+	/*@Bean
 	public RouteLocator routes(RouteLocatorBuilder builder)
 	{
 		return builder.routes()
@@ -31,6 +31,6 @@ public class GatewayServiceApplication {
 				.build();
 				
 				
-	}
+	} */
 
 }

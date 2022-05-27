@@ -19,9 +19,9 @@ public class HelloService1Application {
 	}
 //http://localhost:8080/hello1
 	@GetMapping("/hello1")
-	public String sayHello(@RequestHeader("Authorization") String requestHeaderValue)
+	public String sayHello()//@RequestHeader("Authorization") String requestHeaderValue)
 	{
-		System.out.println("Request Header Value:"+requestHeaderValue);
+		//System.out.println("Request Header Value:"+requestHeaderValue);
 		return "hello1 - service:  ";
 	}
 }
