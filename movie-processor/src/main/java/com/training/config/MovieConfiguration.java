@@ -17,7 +17,7 @@ public class MovieConfiguration {
 
 		return kstream -> kstream.filter((key, movie) -> {
 			if (movie.getGenre().equalsIgnoreCase("thriller")) {
-				System.out.println("Movie Details: " + movie.getTitle());
+				System.out.println("Movie Details: " + movie);
 			} 
 			return movie.getGenre().equalsIgnoreCase("thriller");
 		});

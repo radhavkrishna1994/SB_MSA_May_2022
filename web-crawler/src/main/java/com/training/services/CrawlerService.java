@@ -21,7 +21,7 @@ public class CrawlerService {
 	@Autowired
 	private KafkaTemplate<String,Movie> movieTemplate;
 	
-	private String kafkaTopic = "kafkamovie";
+	private String kafkaTopic = "kafkamovie1";
 	
 	public void crawlMovies()
 	{
@@ -31,12 +31,15 @@ public class CrawlerService {
 		.accept(MediaType.APPLICATION_JSON)
 		.retrieve()
 		.bodyToMono(Movie[].class);
+		/*
+		 * movieMono.subscribe(movieArray->Arrays.stream(movieArray).collect(Collectors.
+		 * toList()) .forEach(movie->System.out.println(movie)));
+		 */
 		
-		movieMono.subscribe(movieArray->Arrays.stream(movieArray).collect(Collectors.toList())
-		.forEach(movie->System.out.println(movie)));
 		
-		movieMono.subscribe(movieArray->Arrays.stream(movieArray).collect(Collectors.toList())
-				.forEach(movie->movieTemplate.send(kafkaTopic, movie)));
+		  movieMono.subscribe(movieArray->Arrays.stream(movieArray).collect(Collectors.
+		  toList()) .forEach(movie->movieTemplate.send(kafkaTopic, movie)));
+		 
 		
 		
 	}
