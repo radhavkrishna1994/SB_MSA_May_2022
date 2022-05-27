@@ -51,6 +51,7 @@ public class GatewayServiceApplication {
 			log.info("First Pre Global Filter");
 			log.info(""+exchange.getRequest().getPath());
 			log.info(""+exchange.getRequest().getMethod());
+			
 		
 			// call helloservice1
 
