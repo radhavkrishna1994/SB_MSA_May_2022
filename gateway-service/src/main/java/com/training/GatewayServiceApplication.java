@@ -42,19 +42,20 @@ public class GatewayServiceApplication {
 
 	} */
 
-	private Logger log = LoggerFactory.getLogger(MyCustomFilter.class);
+	private Logger log = LoggerFactory.getLogger(GatewayServiceApplication.class);
 	@Bean
 	public GlobalFilter globalFilter()
 	{
 		return (exchange,chain) ->{
 
-			log.info("First Pre Filter");
+			log.info("First Pre Global Filter");
 			log.info(""+exchange.getRequest().getPath());
 			log.info(""+exchange.getRequest().getMethod());
+		
 			// call helloservice1
 
 			return chain.filter(exchange).then(Mono.fromRunnable(()->{
-				log.info("First Post Filter");
+				log.info("First Post Global Filter");
 				log.info(""+new Date());
 
 
