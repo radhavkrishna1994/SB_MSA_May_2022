@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @RestController
 @RequestMapping("/helloservice1")
 @SpringBootApplication
@@ -19,8 +19,9 @@ public class HelloService1Application {
 	}
 //http://localhost:8080/hello1
 	@GetMapping("/hello1")
-	public String sayHello()
+	public String sayHello(@RequestHeader("Authorization") String requestHeaderValue)
 	{
+		System.out.println("Request Header Value:"+requestHeaderValue);
 		return "hello1 - service:  ";
 	}
 }
